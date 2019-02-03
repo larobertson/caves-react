@@ -13,9 +13,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get('/')
+    Axios.get('/caves')
     .then((results) => {
       console.log('successful get request', results)
+      this.setState({
+        caves: results.data
+      })
     }).catch(err => alert('error in the get!'))
   }
 

@@ -3,7 +3,7 @@ const db = require('../database/index.js');
 db.connect();
 
 const getData = (callback) => {
-  let query = `SELECT * FROM CAVES;`
+  let query = `SELECT * FROM CAVE;`
   db.query(query, (err, result, fields) => {
     if(err) {
       console.log('error in get request query', err);

@@ -11,20 +11,22 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/", express.static((__dirname + "/../dist")));
+app.use(express.static((__dirname + "/../dist"))); 
+//app.use ('/') should be changed to express.static like above
 
-app.get("/", (req, res) => {
+//app.get will be something other than '/' to keep page getting and data getting separate
+app.get("/caves", (req, res) => {
   getData((err, datas) => {
     if(err){
       console.log('something went wrong in app.get')
     } else {
       console.log('something went well in app.get')
-      res.send('this is where the data gets sent')
+      res.send(datas)
     }
   });
 });
 
-app.post("/", (req, res) => {
+app.post("/caves", (req, res) => {
   //console.log('this is the payload:', req.body.payload)
   let data = req.body.payload;
   postData(data, ()=>{
