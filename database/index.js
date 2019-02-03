@@ -7,10 +7,9 @@ let db = mysql.createConnection({
   database: 'caves'
 })
 
-db.connect();
+//db.connect();
 
 console.log('database is talking!');
 
-db.end()
 
 module.exports = db

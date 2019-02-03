@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Search from "./search.js";
 import Axios from 'axios';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -11,10 +12,6 @@ class App extends React.Component {
     }
   }
 
-  handleSubmit () {
-    //need to get search state from the other page
-    Axios.post('/', payload)
-  }
 
   render() {
     return (

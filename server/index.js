@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
-const db = require('../database/index.js');
+const postData = require('../database/model.js');
 
 const app = express();
 
@@ -17,7 +17,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  
+  console.log('this is the payload:', req.body.payload)
+  let data = req.body.payload;
+  postData(data, ()=>{
+    console.log('trying to send the data to the database')
+  })
+  //now send it to the database
 })
 
 app.listen(3000, () => console.log("Now listening on port 3000!"));
