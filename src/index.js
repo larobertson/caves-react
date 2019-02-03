@@ -12,12 +12,20 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    Axios.get('/')
+    .then((results) => {
+      console.log('successful get request', results)
+    }).catch(err => alert('error in the get!'))
+  }
+
 
   render() {
     return (
       <div>
         <h1>Caves Around the World</h1>
         <Search />
+
       </div>
     )}
 };

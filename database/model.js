@@ -2,7 +2,20 @@ const db = require('../database/index.js');
 
 db.connect();
 
-const postData = (data, cb) => {
+const getData = (callback) => {
+  let query = `SELECT * FROM CAVES;`
+  db.query(query, (err, result, fields) => {
+    if(err) {
+      console.log('error in get request query', err);
+      callback(err)
+    } else {
+      console.log('these are our query results', result)
+      callback(null, result)
+    }
+  })
+}
+
+const postData = (data, callback) => {
   // console.log('what is db?', db)
   let name = data.name;
   let length = Number(data.length);
@@ -15,11 +28,14 @@ const postData = (data, cb) => {
   
   db.query(query, (err, result, fields) => {
     if (err) {
-      console.log('error in the query', err);
+      console.log('error in post request query', err);
     } else {
       console.log('successful query!')
     }
   })
 }
 
-module.exports = postData
+module.exports = {
+  postData,
+  getData
+}
